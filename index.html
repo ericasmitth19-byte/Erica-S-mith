@@ -1,0 +1,2187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erica Smith | Book Marketing Specialist</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .preloader-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .preloader-logo span {
+            color: #c9a227;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255,255,255,0.2);
+            border-top-color: #c9a227;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(26, 26, 46, 0.98);
+            padding: 15px 5%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-icon i {
+            color: #1a1a2e;
+            font-size: 1.2rem;
+        }
+
+        .logo span {
+            color: #c9a227;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #c9a227;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            color: #1a1a2e !important;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(201, 162, 39, 0.4);
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 5% 80px;
+        }
+
+        .hero-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            background: #c9a227;
+        }
+
+        .hero-circle.one {
+            width: 400px;
+            height: 400px;
+            top: -100px;
+            right: -100px;
+        }
+
+        .hero-circle.two {
+            width: 300px;
+            height: 300px;
+            bottom: -50px;
+            left: -50px;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+
+        .hero-content {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(201, 162, 39, 0.15);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .hero-badge i {
+            color: #c9a227;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .hero-title span {
+            color: #c9a227;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #1a1a2e;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c9a227;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-img-main {
+            width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 4px solid rgba(201, 162, 39, 0.3);
+            background: #2a2a4e;
+        }
+
+        .hero-img-border {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid #c9a227;
+            border-radius: 20px;
+            top: 25px;
+            left: 25px;
+            z-index: -1;
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hero-float-card.one {
+            bottom: 40px;
+            left: -40px;
+        }
+
+        .hero-float-card.two {
+            top: 40px;
+            right: -30px;
+            animation-delay: 2s;
+        }
+
+        .float-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .float-icon i {
+            color: #1a1a2e;
+            font-size: 1.1rem;
+        }
+
+        .float-title {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1a1a2e;
+        }
+
+        .float-text {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        /* Trusted Section */
+        .trusted {
+            background: #f8f9fa;
+            padding: 50px 5%;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .trusted-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .trusted-title {
+            font-size: 0.9rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .trusted-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .trusted-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6c757d;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .trusted-logo:hover {
+            opacity: 1;
+            color: #1a1a2e;
+        }
+
+        .trusted-logo i {
+            font-size: 1.8rem;
+        }
+
+        .trusted-logo span {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 5%;
+        }
+
+        .section-light {
+            background: #ffffff;
+        }
+
+        .section-gray {
+            background: #f8f9fa;
+        }
+
+        .section-dark {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(201, 162, 39, 0.1);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .section-badge i {
+            color: #c9a227;
+        }
+
+        .section-badge span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #c9a227;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #1a1a2e;
+        }
+
+        .section-title span {
+            color: #c9a227;
+        }
+
+        .section-dark .section-title {
+            color: white;
+        }
+
+        .section-dark .section-badge {
+            background: rgba(201, 162, 39, 0.2);
+            border: 1px solid rgba(201, 162, 39, 0.3);
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+
+        .section-dark .section-text {
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 450px;
+            height: 550px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            background: #e9ecef;
+        }
+
+        .about-accent {
+            position: absolute;
+            width: 180px;
+            height: 220px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 20px;
+            bottom: -25px;
+            right: -25px;
+            z-index: -1;
+        }
+
+        .about-exp-badge {
+            position: absolute;
+            bottom: 40px;
+            right: -40px;
+            background: white;
+            padding: 25px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+
+        .exp-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c9a227;
+            line-height: 1;
+        }
+
+        .exp-text {
+            font-size: 0.85rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .about-content h2 span {
+            color: #c9a227;
+        }
+
+        .about-content p {
+            color: #6c757d;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .about-feature {
+            display: flex;
+            gap: 15px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .feature-icon i {
+            color: #1a1a2e;
+            font-size: 1.1rem;
+        }
+
+        .feature-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin: 0;
+        }
+
+        .about-signature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid #e9ecef;
+        }
+
+        .sig-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #c9a227;
+            background: #e9ecef;
+        }
+
+        .sig-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .sig-info p {
+            font-size: 0.9rem;
+            color: #c9a227;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+        }
+
+        .service-icon i {
+            font-size: 1.8rem;
+            color: #c9a227;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon i {
+            color: #1a1a2e;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .service-card p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .service-list {
+            margin-bottom: 20px;
+        }
+
+        .service-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .service-list li i {
+            color: #c9a227;
+            font-size: 0.8rem;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #c9a227;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 15px;
+        }
+
+        /* Why Section */
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .why-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .why-item {
+            display: flex;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .why-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #c9a227;
+        }
+
+        .why-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .why-icon i {
+            font-size: 1.3rem;
+            color: #1a1a2e;
+        }
+
+        .why-item-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .why-item-content p {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .why-image {
+            position: relative;
+        }
+
+        .why-img {
+            width: 100%;
+            max-width: 450px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            background: #2a2a4e;
+        }
+
+        .why-stats {
+            position: absolute;
+            bottom: -25px;
+            left: -25px;
+            background: white;
+            padding: 25px 35px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            display: flex;
+            gap: 35px;
+        }
+
+        .why-stat {
+            text-align: center;
+        }
+
+        .why-stat-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #c9a227;
+        }
+
+        .why-stat-label {
+            font-size: 0.8rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Authors Section */
+        .authors-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .author-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .author-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .author-header {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            padding: 35px 25px 70px;
+            text-align: center;
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            color: #1a1a2e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .author-img-wrapper {
+            width: 130px;
+            height: 130px;
+            margin: 0 auto;
+            padding: 4px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .author-img-wrapper:hover {
+            transform: scale(1.05);
+        }
+
+        .author-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #3a3a5e;
+        }
+
+        .author-info-box {
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 12px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 85%;
+            text-align: center;
+        }
+
+        .author-name {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .author-genre {
+            font-size: 0.85rem;
+            color: #c9a227;
+            font-weight: 500;
+        }
+
+        .author-body {
+            padding: 50px 25px 30px;
+        }
+
+        .author-book {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .book-img-wrapper {
+            width: 160px;
+            height: 230px;
+            margin: 0 auto 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            background: #e9ecef;
+        }
+
+        .book-img-wrapper:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .book-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .amazon-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #FF9900;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .amazon-btn:hover {
+            background: #e88a00;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 153, 0, 0.4);
+        }
+
+        .amazon-btn i {
+            font-size: 1.1rem;
+        }
+
+        .author-testimonial {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .author-testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 5px;
+            left: 15px;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #c9a227;
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .author-testimonial p {
+            font-size: 0.9rem;
+            font-style: italic;
+            color: #343a40;
+            position: relative;
+            z-index: 1;
+            margin: 0;
+        }
+
+        .author-email {
+            display: flex;
+            justify-content: center;
+        }
+
+        .author-email a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #1a1a2e;
+            font-size: 0.8rem;
+            font-weight: 500;
+            padding: 10px 15px;
+            background: #e9ecef;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            word-break: break-all;
+        }
+
+        .author-email a:hover {
+            background: #c9a227;
+            color: #1a1a2e;
+        }
+
+        .author-email a i {
+            color: #c9a227;
+            flex-shrink: 0;
+        }
+
+        .author-email a:hover i {
+            color: #1a1a2e;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(201, 162, 39, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 35px;
+        }
+
+        .cta-icon i {
+            font-size: 2.2rem;
+            color: #1a1a2e;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-title span {
+            color: #c9a227;
+        }
+
+        .cta-text {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-info h2 span {
+            color: #c9a227;
+        }
+
+        .contact-info > p {
+            color: #6c757d;
+            font-size: 1.05rem;
+            margin-bottom: 35px;
+        }
+
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 55px;
+            height: 55px;
+            min-width: 55px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-icon i {
+            font-size: 1.2rem;
+            color: #c9a227;
+        }
+
+        .contact-item-content h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .contact-item-content p {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .contact-item-content a {
+            color: #c9a227;
+            font-weight: 500;
+        }
+
+        .contact-form-box {
+            background: #f8f9fa;
+            padding: 45px;
+            border-radius: 20px;
+        }
+
+        .contact-form-title {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .contact-form-subtitle {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group label span {
+            color: #c9a227;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 14px 18px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #c9a227;
+        }
+
+        .form-group textarea {
+            min-height: 130px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            margin-top: 15px;
+        }
+
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-note {
+            display: flex;
+            gap: 10px;
+            padding: 15px;
+            background: rgba(201, 162, 39, 0.1);
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .form-note i {
+            color: #c9a227;
+        }
+
+        .form-note p {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin: 0;
+        }
+
+        .form-success {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        .form-success i {
+            font-size: 4rem;
+            color: #c9a227;
+            margin-bottom: 20px;
+        }
+
+        .form-success h3 {
+            margin-bottom: 10px;
+        }
+
+        .form-success p {
+            color: #6c757d;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            padding: 70px 5% 30px;
+            color: white;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .footer-logo span {
+            color: #c9a227;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.7);
+            margin: 20px 0 25px;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer-contact-item i {
+            color: #c9a227;
+        }
+
+        .footer-contact-item a {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-contact-item a:hover {
+            color: #c9a227;
+        }
+
+        .footer-column h4 {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-column h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 35px;
+            height: 3px;
+            background: #c9a227;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #c9a227;
+            padding-left: 10px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-copyright {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.85rem;
+        }
+
+        .footer-copyright a {
+            color: #c9a227;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: #c9a227;
+            transform: translateY(-3px);
+        }
+
+        .footer-social a i {
+            color: white;
+        }
+
+        /* Back to Top */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #c9a227, #b8860b);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #1a1a2e;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: #1a1a2e;
+                flex-direction: column;
+                padding: 100px 30px;
+                gap: 25px;
+                transition: right 0.3s ease;
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero-container, .about-grid, .why-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .services-grid, .authors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid, .authors-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features, .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .why-stats {
+                position: static;
+                margin-top: 25px;
+                justify-content: center;
+            }
+
+            .about-exp-badge {
+                position: static;
+                margin-top: 20px;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo">Erica <span>Smith</span></div>
+            <div class="loader"></div>
+            <p style="margin-top: 20px; color: rgba(255,255,255,0.7); letter-spacing: 2px;">LOADING...</p>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar" id="navbar">
+        <a href="#home" class="logo">
+            <div class="logo-icon"><i class="fas fa-book-open"></i></div>
+            Erica <span>Smith</span>
+        </a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#authors">Authors</a></li>
+            <li><a href="#contact" class="nav-cta">Get Started</a></li>
+        </ul>
+        <div class="mobile-toggle" id="mobileToggle">
+            <span></span><span></span><span></span>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-circle one"></div>
+        <div class="hero-circle two"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-award"></i>
+                    <span>Professional Book Marketing Specialist</span>
+                </div>
+                <h1 class="hero-title">Transform Your Book Into a <span>Commercial Success</span> Story</h1>
+                <p class="hero-text">Partner with a dedicated book marketing specialist who understands reader psychology, market positioning, and conversion optimization.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-rocket"></i> Get Your Book Featured</a>
+                    <a href="#authors" class="btn btn-secondary"><i class="fas fa-users"></i> View Success Stories</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Authors Helped</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Dedication</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">5★</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-img-wrapper">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLeztqBoVa5i9ifRcM5rYb71plXtarwJFSQ98fNHerxJkuJxnU=s288-c-no" alt="Erica Smith" class="hero-img-main">
+                    <div class="hero-img-border"></div>
+                </div>
+                <div class="hero-float-card one">
+                    <div class="float-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="float-title">Sales Growth</div>
+                    <div class="float-text">Proven Strategies</div>
+                </div>
+                <div class="hero-float-card two">
+                    <div class="float-icon"><i class="fas fa-star"></i></div>
+                    <div class="float-title">Featured Authors</div>
+                    <div class="float-text">Premium Exposure</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUSTED -->
+    <section class="trusted">
+        <div class="trusted-container">
+            <h3 class="trusted-title">Trusted by Authors & Publishers Worldwide</h3>
+            <div class="trusted-logos">
+                <div class="trusted-logo"><i class="fab fa-amazon"></i><span>Amazon</span></div>
+                <div class="trusted-logo"><i class="fas fa-book"></i><span>Barnes & Noble</span></div>
+                <div class="trusted-logo"><i class="fas fa-bookmark"></i><span>Goodreads</span></div>
+                <div class="trusted-logo"><i class="fas fa-feather-alt"></i><span>IngramSpark</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section-light" id="about">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="https://lh3.googleusercontent.com/a/ACg8ocLeztqBoVa5i9ifRcM5rYb71plXtarwJFSQ98fNHerxJkuJxnU=s288-c-no" alt="Erica Smith" class="about-img">
+                <div class="about-accent"></div>
+                <div class="about-exp-badge">
+                    <span class="exp-number">10+</span>
+                    <span class="exp-text">Years Experience</span>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="section-badge"><i class="fas fa-user"></i><span>About Me</span></div>
+                <h2>Your Partner in <span>Book Marketing</span> Excellence</h2>
+                <p>I'm Erica Smith, a dedicated book marketing specialist passionate about helping authors achieve commercial success.</p>
+                <p>My approach combines strategic market analysis, conversion-optimized presentation, and targeted reader engagement.</p>
+                <div class="about-features">
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-bullseye"></i></div>
+                        <div class="feature-content"><h4>Strategic Positioning</h4><p>Tailored market analysis</p></div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+                        <div class="feature-content"><h4>Conversion Focus</h4><p>Optimized for sales</p></div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="feature-content"><h4>Email Documentation</h4><p>Full transparency</p></div>
+                    </div>
+                    <div class="about-feature">
+                        <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                        <div class="feature-content"><h4>Personal Attention</h4><p>Direct specialist access</p></div>
+                    </div>
+                </div>
+                <div class="about-signature">
+                    <img src="https://lh3.googleusercontent.com/a/ACg8ocLeztqBoVa5i9ifRcM5rYb71plXtarwJFSQ98fNHerxJkuJxnU=s288-c-no" alt="Erica Smith" class="sig-img">
+                    <div class="sig-info"><h4>Erica Smith</h4><p>Book Marketing Specialist</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section section-gray" id="services">
+        <div class="section-header">
+            <div class="section-badge"><i class="fas fa-cogs"></i><span>What I Offer</span></div>
+            <h2 class="section-title">Professional <span>Marketing Services</span></h2>
+            <p class="section-text">Comprehensive book marketing solutions designed to convert readers into buyers.</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-search-dollar"></i></div>
+                <h3>Strategic Positioning</h3>
+                <p>In-depth market analysis to position your book for maximum visibility.</p>
+                <ul class="service-list">
+                    <li><i class="fas fa-check"></i> Market research</li>
+                    <li><i class="fas fa-check"></i> Competitive analysis</li>
+                    <li><i class="fas fa-check"></i> Target audience ID</li>
+                </ul>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                <h3>Professional Presentation</h3>
+                <p>Conversion-optimized descriptions that compel readers to buy.</p>
+                <ul class="service-list">
+                    <li><i class="fas fa-check"></i> Book descriptions</li>
+                    <li><i class="fas fa-check"></i> Author biography</li>
+                    <li><i class="fas fa-check"></i> Visual optimization</li>
+                </ul>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-users"></i></div>
+                <h3>Targeted Reader Access</h3>
+                <p>Connect your book with engaged readers actively looking to purchase.</p>
+                <ul class="service-list">
+                    <li><i class="fas fa-check"></i> Genre targeting</li>
+                    <li><i class="fas fa-check"></i> Reader engagement</li>
+                    <li><i class="fas fa-check"></i> Platform visibility</li>
+                </ul>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-star"></i></div>
+                <h3>Featured Author Program</h3>
+                <p>Premium exposure with comprehensive author spotlights.</p>
+                <ul class="service-list">
+                    <li><i class="fas fa-check"></i> Homepage featuring</li>
+                    <li><i class="fas fa-check"></i> Dedicated author page</li>
+                    <li><i class="fas fa-check"></i> Extended visibility</li>
+                </ul>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-link"></i></div>
+                <h3>Multi-Platform Integration</h3>
+                <p>Seamless purchase pathways across all major retailers.</p>
+                <ul class="service-list">
+                    <li><i class="fas fa-check"></i> Amazon integration</li>
+                    <li><i class="fas fa-check"></i> Barnes & Noble</li>
+                    <li><i class="fas fa-check"></i> Multiple retailers</li>
+                </ul>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+                <h3>Complete Documentation</h3>
+                <p>All communications via email for transparency.</p>
+                <ul class="service-list">
+                    <li><i class="fas fa-check"></i> Email-based</li>
+                    <li><i class="fas fa-check"></i> Full documentation</li>
+                    <li><i class="fas fa-check"></i> Clear accountability</li>
+                </ul>
+                <a href="#contact" class="service-link">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section section-dark">
+        <div class="why-grid">
+            <div class="why-content">
+                <div class="section-badge"><i class="fas fa-question-circle"></i><span>Why Choose Me</span></div>
+                <h2 class="section-title">Why Authors Trust Me With Their <span>Book Marketing</span></h2>
+                <p class="section-text">You need a marketing partner who understands both the art and science of selling books.</p>
+                <div class="why-list">
+                    <div class="why-item">
+                        <div class="why-icon"><i class="fas fa-bullseye"></i></div>
+                        <div class="why-item-content"><h4>Conversion-Focused Approach</h4><p>Every strategy turns readers into buyers.</p></div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon"><i class="fas fa-fingerprint"></i></div>
+                        <div class="why-item-content"><h4>Personalized Strategy</h4><p>Custom approach for every book.</p></div>
+                    </div>
+                    <div class="why-item">
+                        <div class="why-icon"><i class="fas fa-lock"></i></div>
+                        <div class="why-item-content"><h4>Complete Transparency</h4><p>All communications documented via email.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-image">
+                <img src="https://lh3.googleusercontent.com/a/ACg8ocLeztqBoVa5i9ifRcM5rYb71plXtarwJFSQ98fNHerxJkuJxnU=s288-c-no" alt="Erica Smith" class="why-img">
+                <div class="why-stats">
+                    <div class="why-stat"><span class="why-stat-num">100%</span><span class="why-stat-label">Commitment</span></div>
+                    <div class="why-stat"><span class="why-stat-num">24/48h</span><span class="why-stat-label">Response</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTHORS -->
+    <section class="section section-gray" id="authors">
+        <div class="section-header">
+            <div class="section-badge"><i class="fas fa-users"></i><span>Success Stories</span></div>
+            <h2 class="section-title">Authors I've <span>Worked With</span></h2>
+            <p class="section-text">Meet talented authors who've trusted me with their book marketing.</p>
+        </div>
+        <div class="authors-grid">
+            
+            <!-- JAMES VICTOR -->
+            <div class="author-card">
+                <div class="author-header">
+                    <span class="featured-badge">Featured Author</span>
+                    <a href="https://www.amazon.com" target="_blank" class="author-img-wrapper">
+                        <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/u3s2ssa4irudks15rt5o8pnfc4._SY600_._SL200_._PQ50_._FMwebp_.jpg" alt="James Victor" class="author-img">
+                    </a>
+                    <div class="author-info-box">
+                        <h3 class="author-name">James Victor</h3>
+                        <span class="author-genre">Author</span>
+                    </div>
+                </div>
+                <div class="author-body">
+                    <div class="author-book">
+                        <a href="https://www.amazon.com" target="_blank" class="book-img-wrapper">
+                            <img src="https://m.media-amazon.com/images/I/91pzX0hLitL._SY300_.jpg" alt="James Book" class="book-img">
+                        </a>
+                        <a href="https://www.amazon.com" target="_blank" class="amazon-btn">
+                            <i class="fab fa-amazon"></i> Buy on Amazon
+                        </a>
+                    </div>
+                    <div class="author-testimonial">
+                        <p>"Working with Erica transformed my book's visibility. Her strategic approach made all the difference!"</p>
+                    </div>
+                    <div class="author-email">
+                        <a href="mailto:jamesdavidvictor6@gmail.com"><i class="fas fa-envelope"></i> jamesdavidvictor6@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KATE CULLEN -->
+            <div class="author-card">
+                <div class="author-header">
+                    <span class="featured-badge">Featured Author</span>
+                    <a href="https://www.amazon.com" target="_blank" class="author-img-wrapper">
+                        <!-- Kate photo - put kate.webp in your folder OR upload online -->
+                        <img src="kate.webp" alt="Kate Cullen" class="author-img">
+                    </a>
+                    <div class="author-info-box">
+                        <h3 class="author-name">Kate Cullen</h3>
+                        <span class="author-genre">Author</span>
+                    </div>
+                </div>
+                <div class="author-body">
+                    <div class="author-book">
+                        <a href="https://www.amazon.com" target="_blank" class="book-img-wrapper">
+                            <img src="https://m.media-amazon.com/images/I/51gJn6op2DL._SY445_SX342_QL70_FMwebp_.jpg" alt="Kate Book" class="book-img">
+                        </a>
+                        <a href="https://www.amazon.com" target="_blank" class="amazon-btn">
+                            <i class="fab fa-amazon"></i> Buy on Amazon
+                        </a>
+                    </div>
+                    <div class="author-testimonial">
+                        <p>"Erica's expertise in book marketing is unmatched. She truly understands what authors need."</p>
+                    </div>
+                    <div class="author-email">
+                        <a href="mailto:katecullen473@gmail.com"><i class="fas fa-envelope"></i> katecullen473@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RACHAEL DUNCAN -->
+            <div class="author-card">
+                <div class="author-header">
+                    <span class="featured-badge">Featured Author</span>
+                    <a href="https://www.amazon.com" target="_blank" class="author-img-wrapper">
+                        <!-- Rachael photo - put rachael.webp in your folder OR upload online -->
+                        <img src="rachael.webp" alt="Rachael C. Duncan" class="author-img">
+                    </a>
+                    <div class="author-info-box">
+                        <h3 class="author-name">Rachael C. Duncan</h3>
+                        <span class="author-genre">Author</span>
+                    </div>
+                </div>
+                <div class="author-body">
+                    <div class="author-book">
+                        <a href="https://www.amazon.com" target="_blank" class="book-img-wrapper">
+                            <img src="https://m.media-amazon.com/images/I/41MzA56MBsL._SY445_SX342_QL70_FMwebp_.jpg" alt="Rachael Book" class="book-img">
+                        </a>
+                        <a href="https://www.amazon.com" target="_blank" class="amazon-btn">
+                            <i class="fab fa-amazon"></i> Buy on Amazon
+                        </a>
+                    </div>
+                    <div class="author-testimonial">
+                        <p>"The personalized attention from Erica was exceptional. She created a marketing strategy that worked!"</p>
+                    </div>
+                    <div class="author-email">
+                        <a href="mailto:authorrachaelduncan@gmail.com"><i class="fas fa-envelope"></i> authorrachaelduncan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-icon"><i class="fas fa-rocket"></i></div>
+            <h2 class="cta-title">Ready to Give Your Book the <span>Marketing It Deserves?</span></h2>
+            <p class="cta-text">Let's make sure your book reaches the readers who will love it.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope"></i> Contact Me Today</a>
+                <a href="#services" class="btn btn-secondary"><i class="fas fa-info-circle"></i> Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section-light" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <div class="section-badge"><i class="fas fa-envelope"></i><span>Get In Touch</span></div>
+                <h2>Let's Discuss Your <span>Book Marketing</span> Goals</h2>
+                <p>Send me a message and I'll respond within 24-48 hours.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-item-content"><h4>Email</h4><p><a href="mailto:ericasmitth19@gmail.com">ericasmitth19@gmail.com</a></p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                        <div class="contact-item-content"><h4>Response Time</h4><p>24-48 hours</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="contact-item-content"><h4>Business Hours</h4><p>Mon - Fri: 9AM - 6PM EST</p></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-globe"></i></div>
+                        <div class="contact-item-content"><h4>Service Area</h4><p>Authors Worldwide</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-box">
+                <h3 class="contact-form-title">Send Me a Message</h3>
+                <p class="contact-form-subtitle">I'll get back to you within 24-48 hours.</p>
+                <form class="contact-form" id="contactForm" action="https://formspree.io/f/mwvrblbo" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Full Name <span>*</span></label>
+                            <input type="text" name="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email <span>*</span></label>
+                            <input type="email" name="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Book Title <span>*</span></label>
+                            <input type="text" name="bookTitle" placeholder="Your book's title" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Genre <span>*</span></label>
+                            <select name="genre" required>
+                                <option value="">Select genre</option>
+                                <option value="Fiction">Fiction</option>
+                                <option value="Non-Fiction">Non-Fiction</option>
+                                <option value="Mystery">Mystery & Thriller</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Sci-Fi">Sci-Fi & Fantasy</option>
+                                <option value="Business">Business & Self-Help</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Book Description <span>*</span></label>
+                        <textarea name="bookDescription" placeholder="Tell me about your book..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Marketing Goals</label>
+                        <textarea name="goals" placeholder="What are you hoping to achieve?"></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </div>
+                    <div class="form-note">
+                        <i class="fas fa-info-circle"></i>
+                        <p>All communications are via email for documentation and accountability.</p>
+                    </div>
+                </form>
+                <div class="form-success" id="formSuccess">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Message Sent!</h3>
+                    <p>I'll respond within 24-48 business hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#home" class="footer-logo">Erica <span>Smith</span></a>
+                <p>Professional book marketing specialist helping authors transform their books into success stories.</p>
+                <div class="footer-contact-item"><i class="fas fa-envelope"></i><a href="mailto:ericasmitth19@gmail.com">ericasmitth19@gmail.com</a></div>
+                <div class="footer-contact-item"><i class="fas fa-clock"></i><span>Mon - Fri: 9AM - 6PM EST</span></div>
+            </div>
+            <div class="footer-column">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#authors">Authors</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#services">Strategic Positioning</a></li>
+                    <li><a href="#services">Professional Presentation</a></li>
+                    <li><a href="#services">Featured Author Program</a></li>
+                    <li><a href="#services">Multi-Platform Integration</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">© 2024 <a href="#home">Erica Smith</a> | All Rights Reserved</p>
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Navbar scroll
+        window.addEventListener('scroll', function() {
+            var navbar = document.getElementById('navbar');
+            var backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Mobile menu
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('.nav-links a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                var target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Back to top
+        document.getElementById('backToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Form
+        document.getElementById('contactForm').addEventListener('submit', function() {
+            var form = this;
+            setTimeout(function() {
+                form.style.display = 'none';
+                document.getElementById('formSuccess').classList.add('show');
+            }, 1000);
+        });
+    </script>
+
+</body>
+</html>
